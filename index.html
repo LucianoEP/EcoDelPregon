@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3A2535">
+  <title>El eco del pregón · Narrativa interactiva</title>
+  <meta name="description" content="Acompañá a Valentina, un personaje ficticio, a crear su primer pregón durante una jornada en Medellín. Expansión de ficción inspirada en Pregoneros de Medellín. Trabajo final · UNVM.">
+  <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<section class="portada" id="portada" aria-labelledby="tportada">
+  <div class="portada-top"><h1 id="tportada" class="portada-titulo">El eco del pregón</h1><p class="portada-sub"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span> Una historia interactiva en Medellín</p></div>
+  <div class="mapa-scroll" id="mapa-portada"><div class="mapa-lienzo">
+    <img src="mapa-fondo.jpg" alt="Mapa ilustrado del recorrido de Valentina en tres etapas: la mañana en las comunas de la montaña, el mediodía junto al tren elevado y la tarde en una plaza." width="1791" height="1000">
+    <div class="titulo-sobre-mapa" aria-hidden="true"><span class="t1">El eco del pregón</span><span class="t2">Una historia interactiva en Medellín</span></div>
+    <svg class="zonas" viewBox="0 0 100 55.8" preserveAspectRatio="none" role="group" aria-label="Etapas del recorrido"><a class="zona z1" href="#nodo01" data-audio="nodo04.mp3" data-nombre="Etapa 1 · La mañana: la intimidad y la memoria" aria-label="Etapa 1, la mañana. Entrar a esta etapa."><polygon points="66,0 100,0 100,27.5 85,27.5 85,26 66,26"/></a>
+        <a class="zona z2" href="#nodo09" data-audio="nodo10.mp3" data-nombre="Etapa 2 · El mediodía: el ritmo de la calle" aria-label="Etapa 2, el mediodía. Entrar a esta etapa."><polygon points="36,17 62,17 62,26.5 90,26.5 90,40 76,40 76,50 36,50"/></a>
+        <a class="zona z3" href="#nodo17" data-audio="nodo15.mp3" data-nombre="Etapa 3 · La tarde: la voz y el encuentro" aria-label="Etapa 3, la tarde. Entrar a esta etapa."><polygon points="0,21 36,21 36,55.8 0,55.8"/></a></svg>
+  </div></div>
+  <p class="etapa-activa" id="etapa-activa" aria-live="polite"></p>
+  <p class="portada-pista"><span class="solo-escritorio">Pasá el mouse por una etapa para escuchar un adelanto.</span><span class="solo-tactil">Tocá una etapa para escuchar un adelanto; tocá de nuevo para entrar.</span></p>
+  <div class="portada-panel">
+    <a class="btn btn-comenzar" href="#nodo01">Comenzar</a>
+    <div class="portada-botones">
+      <a class="btn btn-peq" href="#como-jugar">Cómo jugar</a>
+      <a class="btn btn-peq" href="#acerca">De qué trata</a>
+      <button type="button" class="btn btn-peq" id="activar-sonido">🔊 Activar sonido</button>
+      <a class="btn btn-peq" href="https://www.instagram.com/eco.del.pregon/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg> Instagram</a>
+    </div>
+    <p class="mini">Obra de ficción · 🎧 Mejor con auriculares · Imágenes, videos y voces generados con IA · Trabajo final · UNVM</p>
+  </div>
+</section>
+
+  <form id="juego" action="#" method="get">
+  <button type="submit" disabled hidden aria-hidden="true" tabindex="-1"></button>
+  <main>
+
+<section class="nodo inicio " id="como-jugar" aria-labelledby="tcomo-jugar">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 0%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:0%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><div class="con-sonido" data-audio-box><figure class="media media-interactiva guia"><ul class="guia-lista">
+  <li><span>🖱️</span><b>Elegí</b> tocando las tarjetas</li>
+  <li><span>🔊</span><b>Escuchá</b>: el sonido arranca solo</li>
+  <li><span>↔</span><b>Mirá alrededor</b> deslizando la escena</li>
+  <li><span>🗺</span><b>Mapa</b>: dónde estás en el recorrido</li>
+  <li><span>⌨</span><b>Teclas ← →</b> para avanzar y volver</li>
+  <li><span>📸</span><b>Tarjeta</b> compartible al final</li></ul></figure><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="pad-calido.mp3" type="audio/mpeg"></audio><details><summary>Leer la descripción del sonido</summary><p>Un acorde cálido y lento de fondo.</p></details></div></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Antes de empezar</span> </p>
+        <h1 id="tcomo-jugar">Cómo jugar</h1>
+        <div class="relato"><ol class="pasos">
+    <li><strong>Acompañás a Valentina.</strong> No la controlás: la ayudás a decidir cómo suena su primer pregón durante un día.</li>
+    <li><strong>Elegí con las tarjetas.</strong> Las decisiones de <em>escucha</em> llevan 🎧 y las de <em>memoria</em> y <em>actitud</em> llevan ♥. No hay respuestas correctas.</li>
+    <li><strong>Escuchá.</strong> Los sonidos y videos arrancan solos. Usá auriculares si podés. El botón 🔊 de la esquina inferior derecha silencia todo. Cada sonido tiene su transcripción.</li>
+    <li><strong>Explorá.</strong> En algunas escenas podés mirar alrededor y tocar los puntos ● para descubrir detalles.</li>
+    <li><strong>Mapa.</strong> El botón «Mapa» de arriba te muestra dónde estás en el recorrido.</li>
+    <li><strong>Al final</strong> tu pregón suena de una de <strong>tres maneras</strong> y podés crear una tarjeta para compartir.</li>
+  </ol><p>⏱ Dura entre 10 y 15 minutos. En computadora podés avanzar con las teclas <kbd>←</kbd> <kbd>→</kbd>.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#portada">← Portada</a><a class="btn btn-memoria" href="#nodo01">Comenzar →</a></div></nav>
+</section>
+
+<section class="nodo inicio " id="acerca" aria-labelledby="tacerca">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 0%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:0%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-teaser.jpg" data-autoplay width="1280" height="720"><source src="video-teaser.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Teaser. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Valentina, mirando a cámara, habla desde una terraza con vista a la ciudad y las laderas; luego recorre una calle bajo un viaducto y aparece sonriendo en una plaza al atardecer, con luces colgantes y vendedores.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Antes de empezar</span> </p>
+        <h1 id="tacerca">De qué trata</h1>
+        <div class="relato"><div class="aviso" role="note"><p><strong>Aviso:</strong> Valentina y su jornada son <strong>ficción</strong>. No hay hechos, frases ni personas reales atribuidas a los vendedores del documental. El entorno y las prácticas se inspiran en <em>Pregoneros de Medellín</em>; esta obra no es una continuación oficial ni cuenta con el aval de sus autores. Imágenes, videos y voces fueron generados con inteligencia artificial.</p></div>
+    <h2>La historia</h2>
+    <p>Valentina es una joven de Medellín que quiere salir a vender en la calle, pero todavía no tiene su pregón. Durante una jornada, de la mañana a la noche, va buscando sus palabras, su ritmo y su manera de presentarse. Vos la acompañás y decidís qué sonidos escuchar y qué recuerdos llevarse.</p>
+    <h2>Para qué la hicimos</h2>
+    <p>Es una expansión transmedia interactiva de <em>Pregoneros de Medellín</em>. En lugar de repetir las historias del documental, cuenta algo nuevo: <strong>el comienzo de un oficio y el nacimiento de una voz propia</strong>. Queremos que quien juegue entienda cómo intervienen la memoria, la creatividad y el vínculo con los otros al crear un pregón, y que se acuerde de las voces de su propio barrio.</p>
+    <h2>Sobre este proyecto</h2>
+    <p>Trabajo final de la materia <strong>Narrativas Audiovisuales Interactivas</strong>, de la <strong>Tecnicatura Universitaria en Realización Audiovisual</strong> de la <strong>Universidad Nacional de Villa María (UNVM)</strong>, donde expandimos una historia. 2026.</p>
+    <p>Seguinos en Instagram: <a href="https://www.instagram.com/eco.del.pregon/" target="_blank" rel="noopener">@eco.del.pregon</a></p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#portada">← Portada</a><a class="btn btn-memoria" href="#nodo01">Comenzar →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo01" aria-labelledby="tnodo01">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 4%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:4%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-despertar.jpg" data-autoplay width="1280" height="720"><source src="video-despertar.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Pieza audiovisual de apertura. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Un cuarto con luz suave que entra por una cortina. Valentina despierta en la cama y, luego, apoya las manos en la baranda de un balcón y mira la calle del barrio, con ropa colgada y gente que empieza el día. Se oyen sonidos suaves de la mañana.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 1 de 27</span></p>
+        <h1 id="tnodo01">El Despertar</h1>
+        <div class="relato"><p>Son las seis de la mañana. La luz fría entra por la ventana y el barrio está casi en silencio. Valentina abre los ojos antes de que suene la alarma.</p><p>Hoy sale a vender por primera vez, y todavía no sabe qué va a decir.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#portada">⌂ Inicio</a><a class="btn " href="#nodo02">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo02" aria-labelledby="tnodo02">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 7%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:7%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><div class="con-sonido" data-audio-box><figure class="media media-interactiva respirar" aria-label="Ejercicio para respirar con Valentina">
+  <div class="resp-escena"><div class="resp-aro"></div><div class="resp-circulo"><span class="resp-txt"><b class="t-in">Inhalá…</b><b class="t-out">Exhalá…</b></span></div></div>
+  <p class="resp-ayuda">Respirá con Valentina: inhalá cuando el círculo crece, exhalá cuando se achica.</p>
+</figure><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="respiracion.mp3" type="audio/mpeg"></audio><details><summary>Leer la descripción del sonido</summary><p>Un sonido suave, como una ola, que sube mientras inhalás y baja mientras exhalás, en ciclos de ocho segundos.</p></details></div></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 2 de 27</span></p>
+        <h1 id="tnodo02">El Miedo</h1>
+        <div class="relato"><p>Valentina siente un nudo en la garganta. ¿Y si nadie la escucha? ¿Y si, justo cuando tenga que hablar, no le sale la voz?</p><p>Antes de salir, respira. Lento. Acompañala.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo01">← Volver</a><a class="btn " href="#nodo03">Salir a la terraza →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo03" aria-labelledby="tnodo03">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 11%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:11%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-terraza-360.jpg" data-autoplay width="1280" height="720"><source src="video-terraza-360.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Recorrido en primera persona por la terraza. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Vista en primera persona desde una terraza con baranda de madera: las manos apoyadas en la baranda, techos de ladrillo, una ladera con casas y cabinas de cable aéreo cruzando el cielo nublado. La cámara gira lentamente.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 3 de 27</span></p>
+        <h1 id="tnodo03">La Terraza</h1>
+        <div class="relato"><p>Desde la terraza, la ciudad despierta entre la niebla. Allá abajo, en el centro, la espera su primer día de trabajo. Antes de bajar, quiere llevarse algo de su historia.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo02">← Volver</a><a class="btn btn-memoria" href="#nodo04">♥ Abrir el baúl de los recuerdos</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo04" aria-labelledby="tnodo04">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 15%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:15%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><svg class="baul" viewBox="0 0 400 260" role="img" aria-label="Un viejo baúl de madera que se abre">
+  <defs><linearGradient id="mad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5a3c"/><stop offset="1" stop-color="#5b3a26"/></linearGradient></defs>
+  <ellipse cx="200" cy="238" rx="150" ry="14" fill="rgba(0,0,0,.25)"/>
+  <g class="papeles"><rect x="120" y="70" width="90" height="70" rx="4" fill="#FDFBF7" transform="rotate(-8 165 105)"/><rect x="190" y="62" width="80" height="64" rx="4" fill="#E5C158" transform="rotate(7 230 94)"/><circle cx="262" cy="104" r="22" fill="#C9704A"/></g>
+  <rect x="60" y="130" width="280" height="100" rx="8" fill="url(#mad)" stroke="#3A2535" stroke-width="4"/>
+  <g stroke="#3A2535" stroke-width="3" opacity=".6"><path d="M60 160h280M60 195h280"/></g>
+  <rect x="86" y="130" width="14" height="100" fill="#3A2535" opacity=".7"/><rect x="300" y="130" width="14" height="100" fill="#3A2535" opacity=".7"/>
+  <g class="baul-tapa"><path d="M56 132 q0-62 144-62 q144 0 144 62 z" fill="url(#mad)" stroke="#3A2535" stroke-width="4"/><rect x="86" y="84" width="14" height="48" fill="#3A2535" opacity=".7"/><rect x="300" y="84" width="14" height="48" fill="#3A2535" opacity=".7"/></g>
+  <rect x="184" y="120" width="32" height="36" rx="6" fill="#E5C158" stroke="#3A2535" stroke-width="3"/><circle cx="200" cy="138" r="5" fill="#3A2535"/>
+</svg><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="nodo04.mp3" type="audio/mpeg"></audio><figcaption>Ilustración del equipo.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Una habitación en silencio. Tela que se mueve, la tapa de un baúl de madera que cruje al abrirse y, muy lejos, una calle.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 4 de 27</span></p>
+        <h1 id="tnodo04">El Baúl de los Recuerdos</h1>
+        <div class="relato"><p>Debajo de la cama hay un baúl de madera. Valentina levanta la tapa y salen telas, papeles, una foto. No puede llevarse todo. <strong>¿Qué recuerdo va a ser el corazón de su pregón?</strong></p><div class="opciones" role="radiogroup" aria-label="Recuerdo que Valentina se lleva"><input class="opcion" type="radio" name="mem" id="mem-abuela"><label class="opt opt-memoria" for="mem-abuela"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>El puesto de su abuela</strong><small>El cuidado y la paciencia de quien le enseñó el oficio.</small></span><span class="tilde" aria-hidden="true">✓</span></label><input class="opcion" type="radio" name="mem" id="mem-barrio"><label class="opt opt-memoria" for="mem-barrio"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>El silencio del barrio</strong><small>Lo pequeño que casi no se oye a esa hora.</small></span><span class="tilde" aria-hidden="true">✓</span></label></div><p class="pista" id="pista-mem">Elegí un recuerdo para continuar.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo03">← Volver</a><a class="btn btn-memoria continuar c-abuela" href="#nodo05">Continuar →</a><a class="btn btn-memoria continuar c-barrio" href="#nodo06">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo05" aria-labelledby="tnodo05">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 19%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:19%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="nodo05.jpg" alt="Fotografía antigua de una mujer mayor con delantal de flores acomodando mangos y arepas en un puesto callejero de madera, con buses de época al fondo." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="pad-calido.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios. Foto ficticia.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Un acorde cálido y lento, como un recuerdo que se queda flotando.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 5 de 27</span></p>
+        <h1 id="tnodo05">Memorias de la Abuela</h1>
+        <div class="relato"><p>En la foto, la abuela de Valentina acomoda mangos en su puesto. Casi nunca gritaba: ordenaba la fruta con cuidado y la gente se acercaba sola. Valentina recuerda que de ella aprendió que un trabajo hecho con cariño se nota.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo04">← Volver</a><a class="btn btn-memoria" href="#nodo07">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo06" aria-labelledby="tnodo06">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 22%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:22%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-pano" data-audio-box><p class="pista">↔ Deslizá (o usá las flechas) para mirar alrededor y tocá los puntos ●</p><div class="panor-marco"><button type="button" class="panor-flecha izq" aria-label="Mirar a la izquierda">◀</button><div class="panor-vista" tabindex="0" role="group" aria-label="Escena para mirar alrededor. Vista desde una terraza de ladrillo hacia laderas pobladas de casas de ladrillo rojo, con niebla entre las montañas y cables de luz en primer plano."><div class="panor-lienzo"><img src="nodo03.jpg" alt="Vista desde una terraza de ladrillo hacia laderas pobladas de casas de ladrillo rojo, con niebla entre las montañas y cables de luz en primer plano." width="1600" height="893"><details class="punto" style="left:22%;top:66%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Una puerta que se abre en algún lugar de la ladera. Alguien sale temprano a trabajar.</p></details><details class="punto" style="left:42%;top:28%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Una cabina de cable cruza despacio. Su zumbido apenas se oye, entre la niebla.</p></details><details class="punto" style="left:62%;top:42%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Un perro ladra lejos y otro le responde, como si se pasaran el mensaje.</p></details><details class="punto" style="left:80%;top:68%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Desde alguna cocina llega el golpe de una olla y el olor a café recién hecho.</p></details></div></div><button type="button" class="panor-flecha der" aria-label="Mirar a la derecha">▶</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="amanecer.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Aire suave de la mañana en la ladera, con algunos pájaros lejanos.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 6 de 27</span></p>
+        <h1 id="tnodo06">El Silencio del Barrio</h1>
+        <div class="relato"><p>A esta hora el barrio todavía no suena fuerte. Valentina se queda quieta y empieza a notar lo pequeño. Es un silencio con mucho adentro, y quiere que su pregón lo lleve.</p><p class="pista">Tocá los puntos ● para escuchar con los ojos lo que ella escucha.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo04">← Volver</a><a class="btn btn-memoria" href="#nodo07">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo07" aria-labelledby="tnodo07">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 26%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:26%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><div class="con-sonido" data-audio-box><figure class="media media-interactiva corazon" aria-label="Corazón del pregón">
+  <svg viewBox="0 0 400 340" role="img" aria-label="Un corazón con la palabra clave del pregón"><path class="co-latido" d="M200 310 C60 210 20 130 70 70 C110 25 175 40 200 95 C225 40 290 25 330 70 C380 130 340 210 200 310 Z" fill="#3A2535"/><text x="200" y="150" text-anchor="middle" class="co-pre">el corazón de mi pregón es</text><text x="200" y="200" text-anchor="middle" class="co-palabra"><tspan class="si-ninguna" x="200">?</tspan><tspan class="si-ternura" x="200" dy="0">Ternura</tspan><tspan class="si-orgullo" x="200" dy="0">Orgullo</tspan><tspan class="si-alegria" x="200" dy="0">Alegría</tspan><tspan class="si-valentia" x="200" dy="0">Valentía</tspan></text></svg>
+  <p class="resp-ayuda">La palabra que elijas quedará en el pregón de Valentina.</p>
+</figure><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="latido.mp3" type="audio/mpeg"></audio><details><summary>Leer la descripción del sonido</summary><p>Un latido lento y grave, de corazón en calma, con un fondo suave.</p></details></div></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 7 de 27</span></p>
+        <h1 id="tnodo07">Decisiones Internas</h1>
+        <div class="relato"><p><span class="si-abuela">Valentina se lleva el recuerdo del puesto de su abuela: el cuidado, la paciencia, la fruta bien acomodada.</span><span class="si-barrio">Valentina se lleva el silencio del barrio donde amaneció: lo pequeño, lo que casi no se oye.</span></p><p><strong>¿Qué quiere que se sienta en su pregón?</strong> Elegí la palabra que va a ser su corazón.</p><div class="opciones opciones-4" role="radiogroup" aria-label="Palabra clave del pregón"><input class="opcion" type="radio" name="pal" id="pal-ternura"><label class="opt opt-memoria" for="pal-ternura"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>Ternura</strong><small>Que quien escuche se sienta cuidado.</small></span><span class="tilde" aria-hidden="true">✓</span></label><input class="opcion" type="radio" name="pal" id="pal-orgullo"><label class="opt opt-memoria" for="pal-orgullo"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>Orgullo</strong><small>Que se note el valor de lo que vende.</small></span><span class="tilde" aria-hidden="true">✓</span></label><input class="opcion" type="radio" name="pal" id="pal-alegria"><label class="opt opt-memoria" for="pal-alegria"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>Alegría</strong><small>Que la calle sonría un poco.</small></span><span class="tilde" aria-hidden="true">✓</span></label><input class="opcion" type="radio" name="pal" id="pal-valentia"><label class="opt opt-memoria" for="pal-valentia"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>Valentía</strong><small>Que se anime, aunque tiemble.</small></span><span class="tilde" aria-hidden="true">✓</span></label></div><p class="pista" id="pista-pal">Elegí una palabra para continuar.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo04">← Volver</a><a class="btn btn-memoria continuar c-pal" href="#nodo08">Bajar al centro →</a></div></nav>
+</section>
+
+<section class="nodo manana " id="nodo08" aria-labelledby="tnodo08">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 30%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:30%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster08.jpg" data-autoplay width="1280" height="720"><source src="nodo08.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Pieza audiovisual 1. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Valentina viaja sentada junto a la ventana de un bus. Con la mirada pensativa, ve pasar la ciudad, las laderas y motos. La luz es de mañana.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mañana · 6:00</span> <span class="chip">Nodo 8 de 27</span></p>
+        <h1 id="tnodo08">El Viaje al Centro</h1>
+        <div class="relato"><p>Valentina baja de la montaña en bus. Cambia la luz: del azul de la niebla al sol de la mañana. Cada parada la acerca al centro, y a su miedo.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo07">← Volver</a><a class="btn " href="#nodo09">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo09" aria-labelledby="tnodo09">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 33%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:33%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-n09.jpg" alt="Calle del centro bajo un viaducto de tren, con puestos de flores y fruta, sombrillas de colores y mucha gente caminando." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="nodo09.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Calle peatonal concurrida al mediodía: murmullo de multitud que crece, pasos y motores de buses a lo lejos.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 9 de 27</span></p>
+        <h1 id="tnodo09">Llegada a Carabobo</h1>
+        <div class="relato"><p>Mediodía. El centro la recibe con una multitud que no se detiene. Hay tanta gente que Valentina siente que su voz sería una más entre mil.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo08">← Volver</a><a class="btn " href="#nodo10">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo10" aria-labelledby="tnodo10">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 37%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:37%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-etapa2.jpg" data-autoplay width="1280" height="720"><source src="video-etapa2.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Recorrido en primera persona por el centro. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Vista en primera persona caminando por una calle del centro bajo un viaducto del tren: puestos de flores y fruta, sombrillas de colores y mucha gente que va y viene.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 10 de 27</span></p>
+        <h1 id="tnodo10">El Bullicio de la Calle</h1>
+        <div class="relato"><p>Voces, motores, pasos, bolsas. Todo suena a la vez. Valentina cierra los ojos e intenta encontrar algo ordenado dentro del ruido.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo09">← Volver</a><a class="btn " href="#nodo11">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo11" aria-labelledby="tnodo11">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 41%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:41%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-n11.jpg" alt="Calle bajo un viaducto del tren, con puestos y gente caminando." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="nodo11.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Dos capas de sonido que se pueden distinguir: un raspado y golpeteo metálico, seco y rítmico, y un eco largo como el de un puente de concreto.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 11 de 27</span></p>
+        <h1 id="tnodo11">Escuchar los Ritmos</h1>
+        <div class="relato"><p>Entre el ruido se separan dos cosas: un golpeteo metálico, seco, y un eco largo que viene de abajo del puente. <strong>¿A cuál le presta atención Valentina para marcar el compás de su pregón?</strong></p><div class="opciones" role="radiogroup" aria-label="Ritmo que Valentina escucha"><input class="opcion" type="radio" name="rit" id="rit-metal"><label class="opt opt-escucha" for="rit-metal"><img class="opt-thumb" src="still-metal.jpg" alt="" width="160" height="90"><span class="ico" aria-hidden="true">🎧</span><span class="txt"><strong>El golpe metálico</strong><small>Seco y rápido: el tren y las espátulas sobre la plancha.</small></span><span class="tilde" aria-hidden="true">✓</span></label><input class="opcion" type="radio" name="rit" id="rit-eco"><label class="opt opt-escucha" for="rit-eco"><img class="opt-thumb" src="still-eco.jpg" alt="" width="160" height="90"><span class="ico" aria-hidden="true">🎧</span><span class="txt"><strong>El eco largo</strong><small>Lento y expansivo: los sonidos bajo el viaducto.</small></span><span class="tilde" aria-hidden="true">✓</span></label></div><p class="pista" id="pista-rit">Elegí un sonido para continuar.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo10">← Volver</a><a class="btn btn-escucha continuar c-metal" href="#nodo12">Continuar →</a><a class="btn btn-escucha continuar c-eco" href="#nodo13">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo12" aria-labelledby="tnodo12">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 44%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:44%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster12.jpg" data-autoplay width="1280" height="720"><source src="nodo12.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Pieza audiovisual 2. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Vendedoras y vendedores cocinan sobre una plancha metálica y golpean con la espátula. Detrás, un viaducto de tren elevado y sombrillas de colores. El sonido es percusivo.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 12 de 27</span></p>
+        <h1 id="tnodo12">El Tren y el Metal</h1>
+        <div class="relato"><p>El tren pasa por arriba y, abajo, las espátulas golpean el metal. Valentina empieza a marcar el paso con la mano: seco, corto, rápido.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo11">← Volver</a><a class="btn " href="#nodo14">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo13" aria-labelledby="tnodo13">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 48%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:48%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-pano" data-audio-box><p class="pista">↔ Deslizá (o usá las flechas) para mirar alrededor y tocá los puntos ●</p><div class="panor-marco"><button type="button" class="panor-flecha izq" aria-label="Mirar a la izquierda">◀</button><div class="panor-vista" tabindex="0" role="group" aria-label="Escena para mirar alrededor. Calle bajo dos viaductos de concreto elevados, con pilares enormes, peatones, motos estacionadas, taxis y buses."><div class="panor-lienzo"><img src="nodo13.jpg" alt="Calle bajo dos viaductos de concreto elevados, con pilares enormes, peatones, motos estacionadas, taxis y buses." width="1600" height="893"><details class="punto" style="left:50%;top:22%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Los pilares de concreto sostienen el tren por encima de la calle. Cuando pasa, todo vibra un poco.</p></details><details class="punto" style="left:37%;top:60%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Un puesto bajo toldo, a la sombra del viaducto, con gente que pasa sin detenerse.</p></details><details class="punto" style="left:15%;top:86%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Motos estacionadas contra el cordón. Cada motor suena distinto cuando arranca.</p></details></div></div><button type="button" class="panor-flecha der" aria-label="Mirar a la derecha">▶</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="nodo13.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Bajo un viaducto elevado: reverberación larga, pasos y bocinas con eco, un tren que pasa muy arriba.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 13 de 27</span></p>
+        <h1 id="tnodo13">Ecos del Viaducto</h1>
+        <div class="relato"><p>Debajo del viaducto, los sonidos se estiran. Un paso, una bocina, una voz: todo tarda en apagarse. Valentina respira más despacio y piensa en un canto que se alargue.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo11">← Volver</a><a class="btn " href="#nodo14">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo14" aria-labelledby="tnodo14">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 52%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:52%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-n14.jpg" alt="Valentina, de pelo oscuro y auriculares al cuello, habla en una terraza con la ciudad al fondo." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="nodo14.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Voz femenina joven, tímida, casi susurrando, con pausas: «Mango… mango fresquito… eh… mango, pues.»</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 14 de 27</span></p>
+        <h1 id="tnodo14">El Primer Intento</h1>
+        <div class="relato"><p>Con el ritmo en la cabeza, Valentina suelta las primeras palabras. <span class="si-metal">Salen cortas y a golpes, siguiendo el metal.</span><span class="si-eco">Salen largas, como buscando el eco.</span> Todavía suena bajito e inseguro, pero es un comienzo.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo11">← Volver</a><a class="btn " href="#nodo15">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo15" aria-labelledby="tnodo15">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 56%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:56%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="nodo15.jpg" alt="Pasillo de un mercado lleno de gente, con puestos de frutas y toldos. Dos personas en el centro miran directamente a cámara." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="nodo15.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios. Los rostros no corresponden a personas reales.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Murmullo cercano de mercado: regateos sin palabras claras, bolsas, gente que pasa muy cerca.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 15 de 27</span></p>
+        <h1 id="tnodo15">La Mirada del Otro</h1>
+        <div class="relato"><p>Alguien la mira. Y después otra persona. De golpe, Valentina se da cuenta de que ahora la observan a ella. Se le seca la garganta, pero no se va.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo14">← Volver</a><a class="btn " href="#nodo16">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo mediodia " id="nodo16" aria-labelledby="tnodo16">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 59%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:59%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster16.jpg" data-autoplay width="1280" height="720"><source src="nodo16.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Pieza audiovisual 3. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Valentina camina entre puestos callejeros con auriculares y los ojos cerrados, escuchando con atención el ruido de la calle, que se ordena como un ritmo.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Mediodía · 12:00</span> <span class="chip">Nodo 16 de 27</span></p>
+        <h1 id="tnodo16">La Búsqueda del Compás</h1>
+        <div class="relato"><p>Valentina deja de pelear con el ruido y lo usa. Lo que antes era desorden empieza a sonar como una base para su pregón.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo15">← Volver</a><a class="btn " href="#nodo17">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo17" aria-labelledby="tnodo17">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 63%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:63%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-etapa3.jpg" data-autoplay width="1280" height="720"><source src="video-etapa3.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>El anochecer en la plaza, en primera persona. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Vista en primera persona en una plaza al atardecer: una multitud parada en ronda, músicos con guitarra, luces colgantes y una iglesia al fondo; el sol bajo ilumina la escena.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 17 de 27</span></p>
+        <h1 id="tnodo17">El Sol que Cae</h1>
+        <div class="relato"><p>La luz se vuelve naranja. El cansancio pesa y queda poco tiempo antes de que anochezca. Si Valentina va a hablarle a alguien hoy, tiene que ser ahora.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo16">← Volver</a><a class="btn " href="#nodo18">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo18" aria-labelledby="tnodo18">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 67%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:67%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-n18.jpg" alt="Valentina gesticula mientras piensa, en una calle bajo un viaducto." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="nodo18.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Voz femenina joven, pensativa, hablando para sí misma: «¿Y si le hablo bajito, como a una amiga? ¿O mejor le pongo alegría a todo?»</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 18 de 27</span></p>
+        <h1 id="tnodo18">La Elección de la Voz</h1>
+        <div class="relato"><p><strong>¿Desde qué lugar le habla Valentina a la gente?</strong></p><div class="opciones" role="radiogroup" aria-label="Actitud de Valentina"><input class="opcion" type="radio" name="act" id="act-cercana"><label class="opt opt-memoria" for="act-cercana"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>Cercana</strong><small>Hablar bajito, casi al oído, como a una amiga.</small></span><span class="tilde" aria-hidden="true">✓</span></label><input class="opcion" type="radio" name="act" id="act-festiva"><label class="opt opt-memoria" for="act-festiva"><span class="ico" aria-hidden="true">♥</span><span class="txt"><strong>Festiva</strong><small>Ponerle alegría, humor y picardía a todo.</small></span><span class="tilde" aria-hidden="true">✓</span></label></div><p class="pista" id="pista-act">Elegí una actitud para continuar.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo17">← Volver</a><a class="btn btn-memoria continuar c-cercana" href="#nodo19">Continuar →</a><a class="btn btn-memoria continuar c-festiva" href="#nodo20">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo19" aria-labelledby="tnodo19">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 70%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:70%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-n19.jpg" alt="Valentina con una mano en el pecho habla en una plaza al atardecer." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="nodo19.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Voz femenina joven, en susurro cercano y cálido: «Venga, que este se lo guardé a usted.»</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 19 de 27</span></p>
+        <h1 id="tnodo19">Complicidad Íntima</h1>
+        <div class="relato"><p>Valentina se acerca a una señora y le habla casi al oído, como quien comparte un secreto. No quiere ganarle al ruido: quiere que la escuchen de cerca.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo18">← Volver</a><a class="btn " href="#nodo21">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo20" aria-labelledby="tnodo20">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 74%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:74%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-n20.jpg" alt="Valentina sonríe con entusiasmo mientras habla, en una calle con un viaducto al fondo." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="nodo20.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Voz femenina joven, alegre, enérgica y sonriente: «¡Lleve, lleve, que hoy está de fiesta el mango!»</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 20 de 27</span></p>
+        <h1 id="tnodo20">Picardía Festiva</h1>
+        <div class="relato"><p>Valentina levanta la voz, sonríe y se anima a hacer una pequeña broma. Quiere que quien pase se lleve también un poco de alegría.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo18">← Volver</a><a class="btn " href="#nodo23">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo21" aria-labelledby="tnodo21">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 78%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:78%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster21.jpg" data-autoplay width="1280" height="720"><source src="nodo21.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Pieza audiovisual 4. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Valentina, con una canasta de dulces, conversa con una señora mayor en una calle al atardecer. Hablan de cerca y las dos sonríen.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 21 de 27</span></p>
+        <h1 id="tnodo21">La Prueba de Fuego</h1>
+        <div class="relato"><p>Una señora se detiene. Valentina le habla de cerca, sin apuro, y la señora sonríe. Es la primera vez que alguien la escucha de verdad.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo19">← Volver</a><a class="btn " href="#nodo22">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo23" aria-labelledby="tnodo23">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 85%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:85%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster23.jpg" data-autoplay width="1280" height="720"><source src="nodo23.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Pieza audiovisual 5. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Valentina ofrece una canasta de dulces a un joven con camisa de jean. Él sonríe ante su carisma, en una calle con sombrillas de colores al atardecer.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 23 de 27</span></p>
+        <h1 id="tnodo23">El Rostro de la Gente</h1>
+        <div class="relato"><p>Con alegría y una broma, Valentina logra algo inesperado: la gente le sonríe. Alguien le pide que lo repita.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo20">← Volver</a><a class="btn " href="#nodo22">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo22" aria-labelledby="tnodo22">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 81%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:81%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><div class="con-sonido" data-audio-box><figure class="media media-interactiva ensamble" aria-label="Armá el pregón">
+  <div class="ens-tablero">
+    <button type="button" class="ens-pieza" data-pieza="mem"><span class="ens-ico">♥</span><span class="ens-rot">Memoria</span><span class="ens-txt" data-slot="mem">Tocá para sumar</span></button>
+    <button type="button" class="ens-pieza" data-pieza="rit"><span class="ens-ico">🎧</span><span class="ens-rot">Ritmo</span><span class="ens-txt" data-slot="rit">Tocá para sumar</span></button>
+    <button type="button" class="ens-pieza" data-pieza="act"><span class="ens-ico">♥</span><span class="ens-rot">Actitud</span><span class="ens-txt" data-slot="act">Tocá para sumar</span></button>
+  </div>
+  <p class="ens-resultado" id="ens-resultado" aria-live="polite">Tocá cada pieza: suena y se suma al pregón.</p>
+  <button type="button" class="btn btn-escucha ens-todo" id="ens-todo">▶ Escuchar todo junto</button>
+</figure><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="pad-calido.mp3" type="audio/mpeg"></audio><details><summary>Leer la descripción del sonido</summary><p>Un acorde cálido y lento de fondo. Al tocar cada pieza, suena el fragmento que elegiste.</p></details></div></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 22 de 27</span></p>
+        <h1 id="tnodo22">El Eco del Pregón</h1>
+        <div class="relato"><p>Valentina junta todo lo que fue encontrando durante el día. Tocá cada pieza para escucharla y sumarla al pregón.</p><p>Su palabra clave es <strong class="si-ternura">ternura</strong><strong class="si-orgullo">orgullo</strong><strong class="si-alegria">alegría</strong><strong class="si-valentia">valentía</strong><span class="si-ninguna">…</span>.</p><p>Nada de eso es un truco ni una fórmula: es lo que ella escuchó, recordó y decidió. Con eso, por fin, tiene qué decir.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo18">← Volver</a><a class="btn " href="#nodo24">Continuar →</a></div></nav>
+</section>
+
+<section class="nodo tarde " id="nodo24" aria-labelledby="tnodo24">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 89%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:89%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-pano" data-audio-box><p class="pista">↔ Deslizá (o usá las flechas) para mirar alrededor y tocá los puntos ●</p><div class="panor-marco"><button type="button" class="panor-flecha izq" aria-label="Mirar a la izquierda">◀</button><div class="panor-vista" tabindex="0" role="group" aria-label="Escena para mirar alrededor. Calle de barrio al anochecer, con faroles encendidos, cafés y tiendas iluminadas, puestos de comida y gente caminando; al fondo, la montaña con luces."><div class="panor-lienzo"><img src="nodo24.jpg" alt="Calle de barrio al anochecer, con faroles encendidos, cafés y tiendas iluminadas, puestos de comida y gente caminando; al fondo, la montaña con luces." width="1600" height="893"><details class="punto" style="left:18%;top:20%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Los faroles se encienden uno a uno. Para Valentina, son la señal de que el día se acaba.</p></details><details class="punto" style="left:32%;top:60%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>Un carrito de comida humea en la calle. Huele a fritura caliente.</p></details><details class="punto" style="left:56%;top:20%"><summary><span class="solo-lectores">Tocar para ver un detalle de la escena</span></summary><p>A lo lejos, la ladera se llena de lucecitas, como si la montaña también estuviera despierta.</p></details></div></div><button type="button" class="panor-flecha der" aria-label="Mirar a la derecha">▶</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="nodo15.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Murmullo de gente y de puestos que se van cerrando al caer la tarde.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 24 de 27</span></p>
+        <h1 id="tnodo24">El Despido del Día</h1>
+        <div class="relato"><p>Anochece. Se prenden los faroles, bajan las persianas y la calle se serena. Valentina camina de vuelta con la voz cansada, pero distinta a la de la mañana.</p><p>Ahora sí: es hora de que su pregón salga a la calle.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo22">← Volver</a><a class="btn btn-memoria continuar-final c-fa" href="#nodo25a">Escuchar mi pregón →</a><a class="btn btn-memoria continuar-final c-fb" href="#nodo25b">Escuchar mi pregón →</a><a class="btn btn-memoria continuar-final c-fc" href="#nodo25c">Escuchar mi pregón →</a><a class="btn btn-memoria c-fx" href="#nodo25a">Escuchar mi pregón →</a></div></nav>
+</section>
+
+<section class="nodo tarde final" id="nodo25a" aria-labelledby="tnodo25a">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 93%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:93%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-fa.jpg" alt="Valentina, con una canasta de dulces, conversa de cerca con una señora mayor al atardecer." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="final-a.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Pregón cantado en la calle, con voces y ritmo suave, en un ambiente de mercado. Es la versión más calma y cercana.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 25 de 27 · Final 1 de 3</span></p>
+        <h1 id="tnodo25a">Final 1 · Un susurro que se queda</h1>
+        <div class="relato"><p>Su pregón sale bajito, casi al oído, y llega justo a quien tiene que llegar. No es el más fuerte de la calle: es el que se escucha de cerca.</p><h2>Tu pregón escrito</h2><div class="pregon-escrito" role="group" aria-label="Pregón armado con tus elecciones">
+      <div class="si-abuela">Como me enseñó mi abuela, mango fresquito, de la mata a su mano.</div>
+      <div class="si-barrio">Desde mi barrio, donde amanece con niebla, le traigo mango fresquito.</div>
+      <div class="si-metal">¡Mango, mango, mango fresco, ya!</div>
+      <div class="si-eco">Maaango… fresqui-iito… que se acaba el día.</div>
+      <div class="si-cercana">Venga, que este se lo guardé a usted.</div>
+      <div class="si-festiva">¡Lleve, lleve, que hoy está de fiesta el mango!</div>
+      <div class="pal-linea">Palabra clave: <b class="si-ternura">ternura</b><b class="si-orgullo">orgullo</b><b class="si-alegria">alegría</b><b class="si-valentia">valentía</b></div></div><p>Este es uno de <strong>tres finales posibles</strong>. Podés volver y probar otro recuerdo, otro ritmo u otra actitud.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo24">← Volver</a><a class="btn btn-memoria" href="#nodo26">Seguir →</a></div></nav>
+</section>
+
+<section class="nodo tarde final" id="nodo25b" aria-labelledby="tnodo25b">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 93%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:93%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-fb.jpg" alt="Valentina ofrece su canasta a un joven que sonríe, en una calle con sombrillas de colores." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="final-b.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Pregón cantado en la calle, con voces y golpes de ritmo marcado, en un ambiente de mercado. Es la versión más enérgica y percusiva.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 25 de 27 · Final 2 de 3</span></p>
+        <h1 id="tnodo25b">Final 2 · Sale a la calle con todo</h1>
+        <div class="relato"><p>Golpes de metal y una sonrisa: su pregón se anima a competir con el ruido. Probablemente le cambie las palabras mañana, pero hoy sonó a ella.</p><h2>Tu pregón escrito</h2><div class="pregon-escrito" role="group" aria-label="Pregón armado con tus elecciones">
+      <div class="si-abuela">Como me enseñó mi abuela, mango fresquito, de la mata a su mano.</div>
+      <div class="si-barrio">Desde mi barrio, donde amanece con niebla, le traigo mango fresquito.</div>
+      <div class="si-metal">¡Mango, mango, mango fresco, ya!</div>
+      <div class="si-eco">Maaango… fresqui-iito… que se acaba el día.</div>
+      <div class="si-cercana">Venga, que este se lo guardé a usted.</div>
+      <div class="si-festiva">¡Lleve, lleve, que hoy está de fiesta el mango!</div>
+      <div class="pal-linea">Palabra clave: <b class="si-ternura">ternura</b><b class="si-orgullo">orgullo</b><b class="si-alegria">alegría</b><b class="si-valentia">valentía</b></div></div><p>Este es uno de <strong>tres finales posibles</strong>. Podés volver y probar otro recuerdo, otro ritmo u otra actitud.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo24">← Volver</a><a class="btn btn-memoria" href="#nodo26">Seguir →</a></div></nav>
+</section>
+
+<section class="nodo tarde final" id="nodo25c" aria-labelledby="tnodo25c">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 93%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:93%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-audio" data-audio-box><div class="visual"><img src="still-fc.jpg" alt="Una multitud en ronda alrededor de una pequeña hoguera, en una plaza al atardecer." width="1280" height="720"><span class="eq eq-grande" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><button type="button" class="tocar" aria-label="Tocar para escuchar">▶ Tocá para escuchar</button></div><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio><source src="final-c.mp3" type="audio/mpeg"></audio><figcaption>Imagen generada con IA. Personas y lugares ficticios.</figcaption><details><summary>Leer la transcripción / descripción del sonido</summary><p>Pregón cantado en la calle, con voces largas y alegres, en un ambiente de mercado. Es la versión más expansiva, con eco.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Tarde y anochecer · 18:00</span> <span class="chip">Nodo 25 de 27 · Final 3 de 3</span></p>
+        <h1 id="tnodo25c">Final 3 · Su voz llena el viaducto</h1>
+        <div class="relato"><p>Larga, alegre y con picardía: el pregón se queda rebotando en el concreto cuando Valentina ya pasó. La gente sonríe sin saber bien por qué.</p><h2>Tu pregón escrito</h2><div class="pregon-escrito" role="group" aria-label="Pregón armado con tus elecciones">
+      <div class="si-abuela">Como me enseñó mi abuela, mango fresquito, de la mata a su mano.</div>
+      <div class="si-barrio">Desde mi barrio, donde amanece con niebla, le traigo mango fresquito.</div>
+      <div class="si-metal">¡Mango, mango, mango fresco, ya!</div>
+      <div class="si-eco">Maaango… fresqui-iito… que se acaba el día.</div>
+      <div class="si-cercana">Venga, que este se lo guardé a usted.</div>
+      <div class="si-festiva">¡Lleve, lleve, que hoy está de fiesta el mango!</div>
+      <div class="pal-linea">Palabra clave: <b class="si-ternura">ternura</b><b class="si-orgullo">orgullo</b><b class="si-alegria">alegría</b><b class="si-valentia">valentía</b></div></div><p>Este es uno de <strong>tres finales posibles</strong>. Podés volver y probar otro recuerdo, otro ritmo u otra actitud.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo24">← Volver</a><a class="btn btn-memoria" href="#nodo26">Seguir →</a></div></nav>
+</section>
+
+<section class="nodo cierre " id="nodo26" aria-labelledby="tnodo26">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 96%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:96%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><div class="con-sonido" data-audio-box><figure class="media media-interactiva tarjeta" aria-label="Tarjeta compartible">
+  <canvas id="tarjeta-canvas" width="1080" height="1350" role="img" aria-label="Vista previa de tu tarjeta"></canvas>
+  <figcaption>Tu tarjeta se genera en tu dispositivo: no se sube a ningún servidor.</figcaption>
+</figure><div class="aud" role="group" aria-label="Controles del sonido"><button type="button" class="aud-play" aria-label="Pausar o reanudar">⏸</button><div class="aud-barra" aria-hidden="true"><span></span></div><button type="button" class="aud-replay" aria-label="Escuchar de nuevo">↻</button></div><audio preload="auto" data-node-audio data-loop><source src="pad-calido.mp3" type="audio/mpeg"></audio><details><summary>Leer la descripción del sonido</summary><p>Un acorde cálido y lento de fondo, de cierre.</p></details></div></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Cierre</span> <span class="chip">Nodo 26 de 27</span></p>
+        <h1 id="tnodo26">¡Gracias por jugar!</h1>
+        <div class="relato"><p>Acompañaste a Valentina durante toda una jornada: la escuchaste, la ayudaste a recordar y la dejaste elegir cómo sonar. Su pregón es, un poco, también tuyo.</p><p><strong>Ahora te toca a vos:</strong> ¿qué pregón recordás de tu barrio? Escribilo, creá tu tarjeta y compartila en Instagram con el hashtag <strong>#MiPrimerPregón</strong>, etiquetando a <a href="https://www.instagram.com/eco.del.pregon/" target="_blank" rel="noopener">@eco.del.pregon</a>.</p><label class="campo" for="tarjeta-texto">Tu pregón (máximo 220 caracteres)</label>
+   <textarea id="tarjeta-texto" maxlength="220" rows="3" placeholder="Escribí acá tu pregón…"></textarea>
+   <div class="tarjeta-botones"><button type="button" class="btn btn-memoria" id="tarjeta-crear">✨ Crear mi tarjeta</button><a class="btn btn-escucha" id="tarjeta-descargar" download="mi-primer-pregon.png" href="#" hidden>⬇ Descargar</a><a class="btn btn-sec" href="https://www.instagram.com/eco.del.pregon/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg> Ir a Instagram</a></div>
+   <p class="pista">Esta obra es una expansión de ficción inspirada en <em>Pregoneros de Medellín</em>. Sus autores y las personas del documental no participaron ni la avalan.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#nodo24">← Rejugar el final</a><a class="btn btn-memoria" href="#nodo27">Ver créditos →</a></div></nav>
+</section>
+
+<section class="nodo cierre " id="nodo27" aria-labelledby="tnodo27">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 100%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:100%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-creditos.jpg" data-autoplay width="1280" height="720"><source src="video-creditos.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Créditos en video. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Tres planos de una ladera con niebla y de dos plazas con estatuas, con los nombres del equipo escritos encima. Suena un fondo suave de ciudad.</p></details></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Cierre</span> <span class="chip">Nodo 27 de 27</span></p>
+        <h1 id="tnodo27">Créditos</h1>
+        <div class="relato"><h2>Equipo</h2><ul class="creditos">
+    <li><strong>Violeta Casas</strong><span>Diseño gráfico, tipografía, paleta de colores y CSS.</span></li>
+    <li><strong>Baltasar Moreno</strong><span>Créditos y expansión en redes sociales.</span></li>
+    <li><strong>Catalina Cejas</strong><span>Diseño de la historia, del mapa y de la interactividad con videos 360° (con ayuda de Gemini).</span></li>
+    <li><strong>Irina Quinteros</strong><span>Videos y fotografías (realizados con Gemini).</span></li>
+    <li><strong>Luciano Puebla</strong><span>Audios y voces (ElevenLabs) y diseño del código.</span></li></ul>
+  <h2>Producción</h2><ul>
+    <li>Imágenes y videos generados con Gemini. Personajes y lugares ficticios.</li>
+    <li>Audios y voces generados con ElevenLabs. La voz de Valentina es sintética.</li>
+    <li>Maquetación HTML, CSS y JavaScript con asistencia de Claude (Anthropic).</li>
+    <li>Tipografías: Caveat, Montserrat e Inter, de Google Fonts (licencia SIL Open Font License).</li></ul>
+  <h2>Materia</h2><p><strong>Narrativas Audiovisuales Interactivas</strong> · Tecnicatura Universitaria en Realización Audiovisual · Universidad Nacional de Villa María (UNVM) · Trabajo final, 2026.</p>
+  <h2>Obra de referencia</h2><p><em>Pregoneros de Medellín</em> (webdoc). Sus autores no participaron en este proyecto ni lo avalan.</p>
+  <h2>Redes y licencia</h2><p><a href="https://www.instagram.com/eco.del.pregon/" target="_blank" rel="noopener">@eco.del.pregon</a> en Instagram. Este trabajo se publica bajo licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license">Creative Commons Atribución-CompartirIgual 4.0 (CC BY-SA 4.0)</a>.</p></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-memoria" href="#nodo01" data-reset>↺ Volver a jugar</a><a class="btn btn-escucha" href="#mapa">🗺 Ver el mapa</a><a class="btn btn-sec" href="#portada">⌂ Inicio</a></div></nav>
+</section>
+
+<section class="nodo cierre " id="mapa" aria-labelledby="tmapa">
+  <div class="barra"><div class="barra-in">
+    <a class="marca" href="#portada">El eco del pregón</a>
+    <div class="barra-medio" role="img" aria-label="Avance de la jornada: 100%"><span class="tramos"><i class="t1"></i><i class="t2"></i><i class="t3"></i></span><span class="barra-pct"><span style="width:100%"></span></span></div>
+    <a class="btn-mapa" href="#mapa" aria-label="Ver el mapa y dónde estás"><svg class="ico-mapa" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20V6.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  </div></div>
+  <div class="pagina">
+    <div class="escena">
+      <div class="escena-media"><figure class="media media-mapa"><div class="mapa-img"><img src="mapa.jpg" alt="Mapa ilustrado del recorrido de Valentina: la mañana en las comunas de la montaña, el mediodía en el paseo peatonal con el tren elevado y la tarde en una plaza, con un cierre final." width="1791" height="1000"><a href="#nodo01" style="left:82.0%;top:12.3%;width:16.1%;height:6.1%"><span class="solo-lectores">El Despertar y El Miedo</span></a><a href="#nodo03" style="left:69.3%;top:25.9%;width:8.5%;height:4.0%"><span class="solo-lectores">La Terraza</span></a><a href="#nodo04" style="left:84.3%;top:31.6%;width:13.8%;height:6.1%"><span class="solo-lectores">Los recuerdos en el barrio</span></a><a href="#nodo08" style="left:85.7%;top:44.3%;width:11.8%;height:4.4%"><span class="solo-lectores">El viaje al centro</span></a><a href="#nodo09" style="left:61.2%;top:48.2%;width:14.1%;height:6.3%"><span class="solo-lectores">Llegada a Carabobo y el bullicio</span></a><a href="#nodo11" style="left:66.5%;top:56.9%;width:15.7%;height:6.2%"><span class="solo-lectores">Escuchar los ritmos</span></a><a href="#nodo14" style="left:71.5%;top:65.4%;width:17.5%;height:6.2%"><span class="solo-lectores">Los primeros intentos</span></a><a href="#nodo17" style="left:3.8%;top:45.6%;width:18.4%;height:7.1%"><span class="solo-lectores">El sol que cae</span></a><a href="#nodo18" style="left:20.3%;top:55.6%;width:15.3%;height:7.2%"><span class="solo-lectores">La actitud: íntimo o festivo</span></a><a href="#nodo21" style="left:4.0%;top:90.3%;width:14.0%;height:6.0%"><span class="solo-lectores">La prueba de fuego ante la gente</span></a><a href="#nodo22" style="left:20.6%;top:90.3%;width:15.3%;height:6.0%"><span class="solo-lectores">El eco del pregón y el canto final</span></a><a href="#nodo26" style="left:86.3%;top:89.3%;width:10.5%;height:6.2%"><span class="solo-lectores">Créditos y cierre</span></a></div><figcaption>Mapa ilustrado generado con IA y editado por el equipo.</figcaption></figure></div>
+      <div class="escena-texto">
+        <p class="franja"><span class="chip chip-franja">Cierre</span> </p>
+        <h1 id="tmapa">Mapa de la jornada</h1>
+        <div class="relato"><p>El recorrido de Valentina, de la mañana en la ladera a la plaza al anochecer. Tocá un lugar del mapa para ir a esa parte de la historia.</p><p class="pista">Si saltás entre lugares, las decisiones que no tomaste (memoria, ritmo, actitud) quedan sin elegir. Para armar tu pregón, recorré la historia en orden.</p><h2>Adelanto del recorrido</h2><figure class="media media-video"><video controls playsinline preload="metadata" poster="poster-recorrido.jpg" data-autoplay width="1280" height="720"><source src="video-recorrido.mp4" type="video/mp4">Tu navegador no puede reproducir este video.</video><figcaption>Resumen del recorrido. Video generado con IA; personajes y lugares ficticios.</figcaption><details><summary>Descripción del video</summary><p>Se abre con el mapa de la experiencia y sigue una caminata en primera persona: un balcón con ropa colgada, una calle del centro con vendedores y el tren elevado, y una plaza al atardecer con una multitud cantando alrededor de una pequeña hoguera.</p></details></figure></div>
+      </div>
+    </div>
+  </div>
+  <nav class="acciones" aria-label="Continuar"><div class="acciones-in"><a class="btn btn-sec" href="#portada">⌂ Inicio</a><a class="btn btn-memoria" href="#nodo01" data-reset>↺ Volver a jugar</a></div></nav>
+</section>
+
+  </main>
+  </form>
+  <footer><p>Obra de ficción. Imágenes, videos y voces generados con IA. Licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license">CC BY-SA 4.0</a> · <a href="https://www.instagram.com/eco.del.pregon/" target="_blank" rel="noopener">@eco.del.pregon</a></p></footer>
+
+  <div class="modal" id="modal-mapa" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" hidden>
+    <div class="modal-caja">
+      <div class="modal-cab"><h2 id="modal-titulo">Mapa del recorrido</h2><button type="button" class="btn btn-peq" id="cerrar-mapa">✕ Cerrar</button></div>
+      <p class="donde" id="donde" aria-live="polite"></p>
+      <div class="modal-scroll" id="modal-scroll"><div class="modal-lienzo"><img src="mapa.jpg" alt="Mapa ilustrado del recorrido de Valentina." width="1791" height="1000"><div class="pin" id="pin" hidden><span class="pin-texto">📍 Estás aquí</span></div></div></div>
+    </div>
+  </div>
+  <button type="button" id="btn-sonido" aria-pressed="false" aria-label="Silenciar sonido">🔊</button>
+</body>
+</html>
