@@ -392,16 +392,8 @@ footer a { color: var(--extra); font-size: .85rem; }
 @media (min-width: 861px) { .portada-top { display: none; } }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Solo se quita el movimiento decorativo; las animaciones de la historia (baúl, respiración, corazón) se mantienen */
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .pagina, .btn-comenzar, .video-sonido, .punto summary, .pin, .eq i { animation: none !important; }
+  .eq i { transform: scaleY(.6); }
 }
-
-/* Fondo sonoro de piezas interactivas */
-.con-sonido > .media { margin: 0; }
-.con-sonido .aud { margin-top: .8rem; }
-.con-sonido.sonando .aud { box-shadow: 0 0 0 3px rgba(30, 77, 107, .25); }
-.con-sonido > details { margin-top: .5rem; }
-/* Video: botón para activar el sonido si el navegador lo bloqueó */
-.media-video { position: relative; }
-.video-sonido { position: absolute; left: .8rem; top: .8rem; z-index: 4; display: inline-flex; align-items: center; gap: .5rem; min-height: 2.9rem; padding: 0 1.1rem; border-radius: 2rem; border: 2px solid var(--titulo); background: rgba(58, 37, 53, .88); color: var(--titulo); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; animation: pulso 2.4s infinite; }
-.video-sonido:hover { background: var(--titulo); color: var(--boton); }
